@@ -15,45 +15,76 @@ HTML = """
     <link rel="shortcut icon" href="https://prueba.uncuyo.edu.ar/modular_4/favicon.ico">
 </head>
 <style>
+    html, body {
+        margin: 0;
+        height: 100%;
+    }
+
     body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
         background-color: #e7f2ff;
     }
+
+    main {
+        flex: 1; /* ocupa el espacio disponible, empuja el footer abajo */
+    }
+
     .boton {
         background-color: #067CB2;
         color: white;
         font-weight: 600;
     }
+    
     .boton:hover {
         background-color: #0994d3;
         color: black;
     }
-</style>
-<body class="d-flex flex-column align-self-center">
-    <div class="container text-center mt-5">
-        <img src="{{ url_for('static', filename='encabezado.png') }}" alt="encabezado" style="max-width:80%;">
-    </div>
-    <div class="container text-center mt-5">
-        <div class="card shadow p-4" style="border-radius: 15px;">
-            <h1 class="mb-4">ASSA - SV</h1>
-            <h3 class="mb-3">Generador de QR</h3>
-            <form method="POST" class="mb-3">
-                <div class="input-group">
-                    <input type="text" name="url" placeholder="Pegá tu URL aquí" class="form-control" required>
-                    <button type="submit" class="btn boton">Generar</button>
-                </div>
-            </form>
 
-            {% if qr %}
-                <div class="mt-4">
-                    <h4>✅ QR generado:</h4>
-                    <img src="data:image/png;base64,{{qr}}" alt="QR Code" class="img-thumbnail mt-3" style="max-width:250px;">
-                    <div class="mt-3">
-                        <a href="/download?url={{url}}" class="btn boton">Descargar PNG</a>
-                    </div>
-                </div>
-            {% endif %}
+    footer {
+        width: 100%;
+        height: 5em;
+        background-color: #067CB2;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<body>
+    <main>
+        <div class="container text-center mt-5">
+            <img src="{{ url_for('static', filename='encabezado.png') }}" alt="encabezado" style="max-width:80%;">
         </div>
-    </div>
+        <div class="container text-center mt-5">
+            <div class="card shadow p-4" style="border-radius: 15px;">
+                <h1 class="mb-4">ASSA - SV</h1>
+                <h3 class="mb-3">Generador de QR</h3>
+                <form method="POST" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" name="url" placeholder="Pegá tu URL aquí" class="form-control" required>
+                        <button type="submit" class="btn boton">Generar</button>
+                    </div>
+                </form>
+
+                {% if qr %}
+                    <div class="mt-4">
+                        <h4>✅ QR generado:</h4>
+                        <img src="data:image/png;base64,{{qr}}" alt="QR Code" class="img-thumbnail mt-3" style="max-width:250px;">
+                        <div class="mt-3">
+                            <a href="/download?url={{url}}" class="btn boton">Descargar PNG</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center mt-5">
+        <p>© 2025 Lilia García Hiramatsu | Equipo de ASSA | Facultad de Ingeniería</p>
+    </footer>
 </body>
 </html>
 """
