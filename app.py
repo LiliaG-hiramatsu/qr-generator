@@ -12,8 +12,26 @@ HTML = """
 <head>
     <title>Generador de QR</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="https://prueba.uncuyo.edu.ar/modular_4/favicon.ico">
 </head>
-<body class="bg-dark">
+<style>
+    body {
+        background-color: #e7f2ff;
+    }
+    .btn-generar {
+        background-color: #067CB2;
+        color: white;
+        font-weight: 600;
+    }
+    .btn-generar:hover {
+        background-color: #0994d3;
+        color: black;
+    }
+</style>
+<body class="d-flex flex-column align-self-center">
+    <div class="container text-center mt-5">
+        <img src="{{ url_for('static', filename='encabezado.png') }}" alt="encabezado" style="max-width:80%;">
+    </div>
     <div class="container text-center mt-5">
         <div class="card shadow p-4" style="border-radius: 15px;">
             <h1 class="mb-4">ASSA - SV</h1>
@@ -21,7 +39,7 @@ HTML = """
             <form method="POST" class="mb-3">
                 <div class="input-group">
                     <input type="text" name="url" placeholder="Pegá tu URL aquí" class="form-control" required>
-                    <button type="submit" class="btn btn-success">Generar</button>
+                    <button type="submit" class="btn btn-generar">Generar</button>
                 </div>
             </form>
 
