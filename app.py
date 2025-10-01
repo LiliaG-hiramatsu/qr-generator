@@ -18,12 +18,12 @@ HTML = """
     body {
         background-color: #e7f2ff;
     }
-    .btn-generar {
+    .boton {
         background-color: #067CB2;
         color: white;
         font-weight: 600;
     }
-    .btn-generar:hover {
+    .boton:hover {
         background-color: #0994d3;
         color: black;
     }
@@ -39,7 +39,7 @@ HTML = """
             <form method="POST" class="mb-3">
                 <div class="input-group">
                     <input type="text" name="url" placeholder="Pegá tu URL aquí" class="form-control" required>
-                    <button type="submit" class="btn btn-generar">Generar</button>
+                    <button type="submit" class="btn boton">Generar</button>
                 </div>
             </form>
 
@@ -48,7 +48,7 @@ HTML = """
                     <h4>✅ QR generado:</h4>
                     <img src="data:image/png;base64,{{qr}}" alt="QR Code" class="img-thumbnail mt-3" style="max-width:250px;">
                     <div class="mt-3">
-                        <a href="/download?url={{url}}" class="btn btn-success">Descargar PNG</a>
+                        <a href="/download?url={{url}}" class="btn boton">Descargar PNG</a>
                     </div>
                 </div>
             {% endif %}
